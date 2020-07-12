@@ -4,10 +4,12 @@ import BaseEntity from "../basics/base.entity";
 
 @Entity({name: 'user'})
 class UserEntity extends BaseEntity {
-  @Column({unique: true})
-  public name: string;
-  @Column()
-  public email: string;
+  @Column() public open_id: string;
+  @Column() public nickname: string;
+  @Column() public avatar_url: string;
+  @Column() public phone: string;
+  @Column() public enable: boolean;
+  @Column() public token: string;
   @OneToMany(type => AddressEntity, address => address.user)
   addresses: AddressEntity[];
 }

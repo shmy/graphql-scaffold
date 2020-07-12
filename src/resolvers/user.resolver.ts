@@ -16,26 +16,26 @@ const user = (parent: any, args: { id: string }, ctx: ApolloContext) => {
     relations: ["addresses"]
   });
 };
-
-const createUser = (parent: any, args: { user: { name: string, email: string } }, ctx: ApolloContext) => {
-  const {user: {name, email}} = args;
-  return ctx.userRepository.save({name, email});
-};
-
-const updateUser = async (parent: any, args: { id: string, user: { name: string, email: string } }, ctx: ApolloContext) => {
-  const {id, user: {name, email}} = args;
-  const entity = await ctx.userRepository.findOne(id);
-  if (entity) {
-    const row = ctx.userRepository.merge(entity, {name, email})
-    return await ctx.userRepository.save(row);
-  }
-  throw new Error('can\'t find id by' + id)
-};
-const removeUser = async (parent: any, args: { id: string }, ctx: ApolloContext) => {
-  const {id} = args;
-  const result = await ctx.userRepository.delete(id);
-  return !!result.affected;
-};
+//
+// const createUser = (parent: any, args: { user: { name: string, email: string } }, ctx: ApolloContext) => {
+//   const {user: {name, email}} = args;
+//   return ctx.userRepository.save({name, email});
+// };
+//
+// const updateUser = async (parent: any, args: { id: string, user: { name: string, email: string } }, ctx: ApolloContext) => {
+//   const {id, user: {name, email}} = args;
+//   const entity = await ctx.userRepository.findOne(id);
+//   if (entity) {
+//     const row = ctx.userRepository.merge(entity, {name, email})
+//     return await ctx.userRepository.save(row);
+//   }
+//   throw new Error('can\'t find id by' + id)
+// };
+// const removeUser = async (parent: any, args: { id: string }, ctx: ApolloContext) => {
+//   const {id} = args;
+//   const result = await ctx.userRepository.delete(id);
+//   return !!result.affected;
+// };
 
 const Resolver: IResolver = {
   Query: {
@@ -43,9 +43,9 @@ const Resolver: IResolver = {
     user
   },
   Mutation: {
-    createUser,
-    removeUser,
-    updateUser
+    // createUser,
+    // removeUser,
+    // updateUser
   },
   Field: {
 

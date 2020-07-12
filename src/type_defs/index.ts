@@ -6,11 +6,11 @@ import DataLoader from "dataloader";
 import { gql } from 'apollo-server-koa';
 const typeDefs = gql`
   # Your schema will go here
-  type Mutation {
-    createUser(user: UserInput!): User!
-    updateUser(id: String!, user: UserInput!): User!
-    removeUser(id: String!): Boolean!
-  }
+  # type Mutation {
+  #  createUser(user: UserInput!): User!
+  #  updateUser(id: String!, user: UserInput!): User!
+  #  removeUser(id: String!): Boolean!
+  # }
   type Query {
     user(id: String!): User!
     users(page: Int!, pageSize: Int!): [User!]!
@@ -20,7 +20,10 @@ const typeDefs = gql`
   type User {
     addresses: [Address!]!
     created_at: String!
-    email: String!
+    nickname: String!
+    avatar_url: String!
+    phone: String!
+    enable: Boolean!
     id: ID!
     name: String!
     updated_at: String!
@@ -31,10 +34,6 @@ const typeDefs = gql`
     address: String!
     updated_at: String!
     user: User
-  }
-  input UserInput {
-    email: String!
-    name: String!
   }
 `;
 
