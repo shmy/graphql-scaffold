@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "noImplicitAny": true,
+    "outDir": "./dist/src",
+    "strict": true,
+    "sourceMap": false,
+    "allowJs": false,
+    "newLine": "LF",
+    "removeComments": true,
+    "baseUrl": "./",
+    "typeRoots": [
+      "node_modules/@types",
+      "global.d.ts"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
