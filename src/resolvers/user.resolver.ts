@@ -1,5 +1,5 @@
 import {ApolloContext} from "../type_defs";
-import {IResolver} from "./interface";
+import {IResolver} from "../type_defs/interface";
 
 const users = (parent: any, args: { page: number, pageSize: number }, ctx: ApolloContext) => {
   const {page, pageSize} = args;

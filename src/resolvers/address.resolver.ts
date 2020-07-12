@@ -34,8 +34,8 @@
 //
 // export default AddressResolver;
 import {ApolloContext} from "../type_defs";
-import Address from "../entities/address";
-import {IResolver} from "./interface";
+import AddressEntity from "../entities/address.entity";
+import {IResolver} from "../type_defs/interface";
 
 const addresses = (parent: any, args: { page: number, pageSize: number }, ctx: ApolloContext) => {
   const {page, pageSize} = args;
@@ -48,7 +48,7 @@ const address = (parent: any, args: { id: string }, ctx: ApolloContext) => {
   const {id} = args;
   return ctx.addressRepository.findOne(id);
 };
-const user = (parent: Address, args: {}, ctx: ApolloContext) => {
+const user = (parent: AddressEntity, args: {}, ctx: ApolloContext) => {
   ctx.userDataLoader.clearAll();
   return ctx.userDataLoader.load(parent.user_id)
 };

@@ -1,8 +1,7 @@
 import {getRepository, Repository} from "typeorm";
-import User from "../entities/user";
-import Address from "../entities/address";
-import userDataLoader from "../loaders/user";
-import addressDataLoader from "../loaders/address";
+import UserEntity from "../entities/user.entity";
+import AddressEntity from "../entities/address.entity";
+import {userDataLoader, addressDataLoader} from "../loaders";
 import DataLoader from "dataloader";
 import { gql } from 'apollo-server-koa';
 const typeDefs = gql`
@@ -42,16 +41,16 @@ const typeDefs = gql`
 export default typeDefs;
 
 export interface ApolloContext {
-  userRepository: Repository<User>,
-  addressRepository: Repository<Address>,
-  userDataLoader: DataLoader<string, User, unknown>,
-  addressDataLoader: DataLoader<string, Address, unknown>,
+  userRepository: Repository<UserEntity>,
+  addressRepository: Repository<AddressEntity>,
+  userDataLoader: DataLoader<string, UserEntity, unknown>,
+  addressDataLoader: DataLoader<string, AddressEntity, unknown>,
 }
 
 export const getContext: () => ApolloContext = () => {
   return {
-    userRepository: getRepository(User),
-    addressRepository: getRepository(Address),
+    userRepository: getRepository(UserEntity),
+    addressRepository: getRepository(AddressEntity),
     userDataLoader: userDataLoader('id'),
     addressDataLoader: addressDataLoader('id'),
   };
